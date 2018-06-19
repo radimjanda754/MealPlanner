@@ -1,0 +1,23 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Plan:</strong>
+  <%= @sport.plan.name %>
+</p>
+
+<p>
+  <strong>Activity:</strong>
+  <%= @sport.activity.name %>
+</p>
+
+<p>
+  <strong>Time:</strong>
+  <%= @sport.time %>
+</p>
+
+<p>
+  <strong>Expected calories burned:</strong><br>
+  <b>Calories [kcal] = </b><%= @sport.output %><br>
+</p>
+
+<%= link_to 'Back', '/plans/'+@sport.plan_id.to_s %>

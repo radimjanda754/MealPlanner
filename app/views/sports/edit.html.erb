@@ -1,0 +1,10 @@
+<h1>Editing Sport</h1>
+
+<%= render 'form', sport: @sport %>
+
+<p>
+  <strong>Expected calories burned:</strong><br>
+  <b>Calories [kcal] = </b><%= @sport.output %><br>
+</p>
+
+<%= link_to 'Back', url_for(:back) %>

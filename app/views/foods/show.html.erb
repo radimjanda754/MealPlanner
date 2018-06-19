@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @food.name %>
+</p>
+
+<p>
+  <strong>Proteins [grams per 100g]:</strong>
+  <%= @food.prots %>
+</p>
+
+<p>
+  <strong>Carbohydrates [grams per 100g]:</strong>
+  <%= @food.carbs %>
+</p>
+
+<p>
+  <strong>Fats [grams per 100g]:</strong>
+  <%= @food.fats %>
+</p>
+
+<p>
+  <strong>Cals [kcal per 100g]:</strong>
+  <%= @food.cals %>
+</p>
+
+<%= link_to 'Edit', edit_food_path(@food) %> |
+<%= link_to 'Back', foods_path %>

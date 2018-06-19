@@ -1,0 +1,18 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @activity.name %>
+</p>
+
+<p>
+  <strong>Difficult:</strong>
+  <%= @activity.difficult %>
+  <h3>Estimated difficult value meaning:</h3>
+  1 .. slow walk<br>
+  5 .. fotball match<br>
+  10 .. intensive strenght training<br>
+</p>
+
+<%= link_to 'Edit', edit_activity_path(@activity) %> |
+<%= link_to 'Back', activities_path %>

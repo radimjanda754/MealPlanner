@@ -1,0 +1,13 @@
+<h1>Editing Meal</h1>
+
+<%= render 'form', meal: @meal %>
+
+<p>
+  <strong>Total in this meal:</strong><br>
+  <b>Proteins [g] = </b><%= @meal.prots %><br>
+  <b>Carbohydrates [g] = </b><%= @meal.carbs %><br>
+  <b>Fats [g] = </b><%= @meal.fats %><br>
+  <b>Calories [kcal] = </b><%= @meal.cals %><br>
+</p>
+
+<%= link_to 'Back', url_for(:back) %>

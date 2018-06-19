@@ -1,0 +1,36 @@
+<%= form_for(sport) do |f| %>
+  <% if sport.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(sport.errors.count, "error") %> prohibited this sport from being saved:</h2>
+
+      <ul>
+      <% sport.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :plan_id %>
+    <%= f.text_field :plan_id , :value => params[:plan], :readonly => true%>
+  </div>
+
+  <p>
+  <div class="field">
+    <%= f.label :activity_id %>
+    <%= f.select :activity_id , options_for_select(Activity.all.order('name').map{|s|[s.name, s.id]}) %>
+  </div>
+    Dont see your activity in available selection? Add it to database.<br>
+    <%= link_to 'Manage Activities Database', '/activities', target: '_blank' %><br>
+    Refresh the page to see recently added items.</p>
+
+  <div class="field">
+    <%= f.label 'Time [minutes]' %>
+    <%= f.number_field :time %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

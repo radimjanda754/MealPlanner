@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  prots: 1
+  carbs: 1
+  fats: 1
+  cals: 1
+
+two:
+  name: MyString
+  prots: 1
+  carbs: 1
+  fats: 1
+  cals: 1

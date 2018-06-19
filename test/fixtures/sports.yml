@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  plan: one
+  activity: one
+  time: 1
+
+two:
+  plan: two
+  activity: two
+  time: 1

@@ -1,0 +1,99 @@
+<%= form_for(plan) do |f| %>
+  <% if plan.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(plan.errors.count, "error") %> prohibited this plan from being saved:</h2>
+
+      <ul>
+      <% plan.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <h3>Add Meals to your plan</h3>
+  <table align="center">
+    <thead>
+    <tr>
+      <th>Food</th>
+      <th>Grams</th>
+      <th colspan="2"></th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <% @plan.meals.each do |meal| %>
+        <tr>
+          <td><%= meal.food.name %></td>
+          <td><%= meal.grams %></td>
+          <td><%= link_to 'Edit', '/meals/'+meal.id.to_s+'/edit?plan='+@plan.id.to_s %></td>
+          <td><%= link_to 'Destroy', meal, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+    <% end %>
+    </tbody>
+  </table>
+  <td><%= link_to 'Add Meal', '/meals/new?plan='+@plan.id.to_s %></td>
+
+  <h3>Add Sports to your plan</h3>
+  <table align="center">
+    <thead>
+    <tr>
+      <th>Activity</th>
+      <th>Time [min]</th>
+      <th colspan="2"></th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <% @plan.sports.each do |sport| %>
+        <tr>
+          <td><%= sport.activity.name %></td>
+          <td><%= sport.time %></td>
+          <td><%= link_to 'Edit', '/sports/'+sport.id.to_s+'/edit?plan='+@plan.id.to_s %></td>
+          <td><%= link_to 'Destroy', sport, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+    <% end %>
+    </tbody>
+  </table>
+  <td><%= link_to 'Add Sport', '/sports/new?plan='+@plan.id.to_s %></td>
+
+  <p>- - - - -</p>
+
+    <div style='text-align: center'>
+      <div style='display: inline-block; text-align: left'>
+        <h3>Your total energetical and nutrition input:</h3>
+        <b>Proteins [g] = </b><%= @plan.prots %><br>
+        <i>Recommended around 1.2 to 1.5g per 1kg of body weight</i><br>
+        <b>Carbohydrates [g] = </b><%= @plan.carbs %><br>
+        <i>Very individual recommended around 3.5 to 7.5g per 1kg of body weight</i><br>
+        <b>Fats [g] = </b><%= @plan.fats %><br>
+        <i>Recommended around 60-100g of fats</i><br>
+        <b>Calories [kcal] = </b><%= @plan.cals %><br><br>
+
+        <h3>Your total energetical output:</h3>
+        <b>Daily natural energetical output [kcal] = </b>1700<br>
+        <b>Burned calories from activities [kcal] = </b><%= @plan.output %><br>
+        <i>All energetical outputs increases with body weight, values are estimated for average person</i><br><br>
+
+        <h3>Your final energetical balance:</h3>
+        <b>Energetical balance (input-output) [kcal] = </b><%= @plan.cals - @plan.output - @plan.basicoutput %><br>
+        <i>Should be negative if you want to lose weight, or positive if you want to gain weight</i><br>
+      </div>
+    </div>
+
+  <p>- - - - -</p>
+
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :description %>
+    <%= f.text_area :description %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

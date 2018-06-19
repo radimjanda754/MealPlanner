@@ -1,0 +1,84 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @plan.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @plan.description %>
+</p>
+
+<p>- - - - -</p>
+
+<h3>Meals in this plan</h3>
+<table align="center">
+  <thead>
+  <tr>
+    <th>Food</th>
+    <th>Grams</th>
+    <th colspan="2"></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @plan.meals.each do |meal| %>
+      <tr>
+        <td><%= meal.food.name %></td>
+        <td><%= meal.grams %></td>
+        <td><%= link_to 'Show', meal %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<h3>Sports in this plan</h3>
+<table align="center">
+  <thead>
+  <tr>
+    <th>Activity</th>
+    <th>Time [min]</th>
+    <th colspan="2"></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @plan.sports.each do |sport| %>
+      <tr>
+        <td><%= sport.activity.name %></td>
+        <td><%= sport.time %></td>
+        <td><%= link_to 'Show', sport %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<p>- - - - -</p>
+
+<div style='text-align: center'>
+  <div style='display: inline-block; text-align: left'>
+    <h3>Your total energetical and nutrition input:</h3>
+    <b>Proteins [g] = </b><%= @plan.prots %><br>
+    <i>Recommended around 1.2 to 1.5g per 1kg of body weight</i><br>
+    <b>Carbohydrates [g] = </b><%= @plan.carbs %><br>
+    <i>Very individual recommended around 3.5 to 7.5g per 1kg of body weight</i><br>
+    <b>Fats [g] = </b><%= @plan.fats %><br>
+    <i>Recommended around 60-100g of fats</i><br>
+    <b>Calories [kcal] = </b><%= @plan.cals %><br><br>
+
+    <h3>Your total energetical output:</h3>
+    <b>Daily natural energetical output [kcal] = </b>1700<br>
+    <b>Burned calories from activities [kcal] = </b><%= @plan.output %><br>
+    <i>All energetical outputs increases with body weight, values are estimated for average person</i><br><br>
+
+    <h3>Your final energetical balance:</h3>
+    <b>Energetical balance (input-output) [kcal] = </b><%= @plan.cals - @plan.output - @plan.basicoutput %><br>
+    <i>Should be negative if you want to lose weight, or positive if you want to gain weight</i><br>
+  </div>
+</div>
+
+<p>- - - - -</p>
+
+<%= link_to 'Edit', edit_plan_path(@plan) %> |
+<%= link_to 'Back', plans_path %>
